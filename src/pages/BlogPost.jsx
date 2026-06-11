@@ -26,7 +26,7 @@ export default function BlogPost() {
 
       {/* Post hero */}
       <section className="bg-[#FAFAF7] border-b border-gray-200">
-        <div className="max-w-3xl mx-auto px-6 md:px-10 py-12 md:py-16">
+        <div className="max-w-4xl mx-auto px-6 md:px-10 py-12 md:py-16">
           <div className="flex items-center gap-4 mb-6 flex-wrap">
             <span className="inline-flex items-center gap-1 font-mono text-xs text-amber-600 font-semibold">
               <Calendar size={12} />
@@ -54,7 +54,7 @@ export default function BlogPost() {
       {/* Cover image (optional) */}
       {post.cover && (
         <section className="bg-white">
-          <div className="max-w-3xl mx-auto px-6 md:px-10 py-6">
+          <div className="max-w-4xl mx-auto px-6 md:px-10 py-6">
             <img src={post.cover} alt={post.title} className="w-full rounded-xl shadow-md" />
           </div>
         </section>
@@ -62,7 +62,7 @@ export default function BlogPost() {
 
         <article className="blog-post-page">
           <div
-            className="max-w-3xl mx-auto px-6 md:px-10 py-10 blog-prose"
+            className="max-w-4xl mx-auto px-6 md:px-10 py-10 blog-prose"
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
         </article>
