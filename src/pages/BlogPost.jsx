@@ -25,7 +25,7 @@ export default function BlogPost() {
       </header>
 
       {/* Post hero */}
-      <section className="bg-white border-b border-gray-200">
+      <section className="bg-[#FAFAF7] border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-6 md:px-10 py-12 md:py-16">
           <div className="flex items-center gap-4 mb-6 flex-wrap">
             <span className="inline-flex items-center gap-1 font-mono text-xs text-amber-600 font-semibold">
@@ -60,13 +60,12 @@ export default function BlogPost() {
         </section>
       )}
 
-      {/* Article body */}
-      <article className="bg-white">
-        <div
-          className="max-w-3xl mx-auto px-6 md:px-10 py-10 blog-prose"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
-      </article>
+        <article className="blog-post-page">
+          <div
+            className="max-w-3xl mx-auto px-6 md:px-10 py-10 blog-prose"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+        </article>
 
       {/* Footer / next reads */}
       {otherPosts.length > 0 && (
