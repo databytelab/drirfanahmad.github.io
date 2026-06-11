@@ -47,7 +47,9 @@ function preprocessCustomBlocks(raw) {
 
   // Image grid: :::imagegrid ... :::
   out = out.replace(/:::imagegrid\n([\s\S]*?)\n:::/g, (_, inner) => {
-    const figures = inner.trim().split('\n').map(line => {
+    const lines = inner.trim().split('\n').filter(l => l.match(/::image\{/))
+    const count = lines.length
+    const figures = lines.map(line => {
       const m = line.match(/::image\{([^}]+)\}/)
       if (!m) return ''
       const attrs = m[1]
@@ -57,17 +59,26 @@ function preprocessCustomBlocks(raw) {
       const caption = captionMatch ? captionMatch[1] : ''
       return `<figure class="blog-figure"><img src="${src}" alt="${caption}" loading="lazy" />${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`
     }).join('\n')
-    return `<div class="blog-figure-grid">${figures}</div>`
+
+    // Pick grid class based on image count
+    const gridClass = count === 4 ? 'blog-figure-grid-4'
+                    : count === 3 ? 'blog-figure-grid-3'
+                    : 'blog-figure-grid'
+
+    return `<div class="${gridClass}">${figures}</div>`
   })
 
   // Single image: ::image{src=/path caption="..."}
-  out = out.replace(/::image\{([^}]+)\}/g, (_, attrs) => {
-    const srcMatch = attrs.match(/src=([^\s]+)/)
-    const captionMatch = attrs.match(/caption="([^"]+)"/)
-    const src = srcMatch ? srcMatch[1] : ''
-    const caption = captionMatch ? captionMatch[1] : ''
-    return `<figure class="blog-figure"><img src="${src}" alt="${caption}" loading="lazy" />${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`
-  })
+// Single image: ::image{src=/path caption="..." class="portrait"}
+out = out.replace(/::image\{([^}]+)\}/g, (_, attrs) => {
+  const srcMatch = attrs.match(/src=([^\s]+)/)
+  const captionMatch = attrs.match(/caption="([^"]+)"/)
+  const classMatch = attrs.match(/class="([^"]+)"/)
+  const src = srcMatch ? srcMatch[1] : ''
+  const caption = captionMatch ? captionMatch[1] : ''
+  const extraClass = classMatch ? ` ${classMatch[1]}` : ''
+  return `<figure class="blog-figure${extraClass}"><img src="${src}" alt="${caption}" loading="lazy" />${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`
+})
 
   // Pull quote: :::pullquote -- Citation\n...\n:::
   out = out.replace(/:::pullquote(?:\s+--\s+(.+))?\n([\s\S]*?)\n:::/g, (_, cite, body) => {

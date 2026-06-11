@@ -494,26 +494,38 @@
   font-weight: 600;
 }
 
-/* ── Image figure  ::image ── */
-.blog-figure { margin: 2rem 0; }
+/* Single image */
+.blog-figure {
+  margin: 2rem 0;
+}
+
 .blog-figure img {
   width: 100%;
-  border-radius: 6px;
+  height: auto;
   display: block;
-  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
+
 .blog-figure figcaption {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #718096;
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
   font-style: italic;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.7rem;
   letter-spacing: 0.05em;
 }
 
-/* ── Image grid  :::imagegrid ── */
+/* Facebook / portrait images — cap width so they don't stretch */
+.blog-figure.portrait img {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 2-image grid */
 .blog-figure-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -521,44 +533,34 @@
   margin: 2rem 0;
 }
 
-/* ── Tags footer strip ── */
-.blog-tags-strip {
-  border-top: 3px double #C8D9EC;
-  padding-top: 24px;
-  margin-top: 3rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.blog-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  border: 1px solid #C8D9EC;
-  padding: 4px 10px;
-  color: #718096;
-  background: #FAFAF7;
+/* 3-image grid */
+.blog-figure-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 2rem 0;
 }
 
-/* ── Share CTA (bottom of post) ── */
-.blog-share-cta {
-  font-family: 'Lora', serif;
-  font-size: 1.1rem;
-  font-style: italic;
-  color: #718096;
-  text-align: center;
-  padding: 20px 24px;
-  background: #EDE8DC;
-  margin-top: 12px;
-  border-radius: 4px;
+/* 4-image 2×2 grid — zero margin on inner figures */
+.blog-figure-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin: 2rem 0;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+/* Remove extra margin on figures inside any grid */
+.blog-figure-grid .blog-figure,
+.blog-figure-grid-3 .blog-figure,
+.blog-figure-grid-4 .blog-figure {
+  margin: 0;
+}
+
+/* Mobile — all grids collapse to one column */
+@media (max-width: 640px) {
+  .blog-figure-grid,
+  .blog-figure-grid-3,
+  .blog-figure-grid-4 {
+    grid-template-columns: 1fr;
   }
-  .marquee-track { animation: none !important; }
-  .reveal { opacity: 1 !important; transform: none !important; }
 }
