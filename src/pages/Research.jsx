@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import {
   Search, ExternalLink, FileText, BookOpen,
-  Brain, Network, ScanEye, Atom,
+  Brain, Network, ScanEye, Atom, GraduationCap,
 } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { publications } from '../data/publications'
@@ -9,7 +9,7 @@ import { profile } from '../data/profile'
 import { researchInterests } from '../data/researchInterests'
 import { useReveal } from '../hooks/useReveal'
 
-const interestIcons = { Brain, Network, ScanEye, Atom }
+const interestIcons = { Brain, Network, ScanEye, Atom, Search, GraduationCap }
 
 export default function Research() {
   const [filter, setFilter] = useState('all')
@@ -35,7 +35,6 @@ export default function Research() {
   return (
     <>
       <PageHero
-        variant="research"
         label="Research"
         title="Publications & Active Research"
         description={`${publications.length} peer-reviewed publications across chaos theory, machine learning, and applied AI. Featured in IEEE Access, IJBC, Physica D, Transportation Research, and Technology in Society.`}
@@ -105,6 +104,7 @@ export default function Research() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              aria-label="Search publications by title, author, or topic"
               placeholder="Search by title, author, or topic..."
               className="w-full pl-10 pr-4 py-2.5 rounded-full border border-gray-300 focus:border-navy-600 focus:outline-none focus:ring-2 focus:ring-navy-400/30 text-sm bg-white"
             />
@@ -148,6 +148,12 @@ export default function Research() {
                 <p className="text-sm text-muted">
                   {p.venue}{p.volume && `, ${p.volume}`}{p.location && ` · ${p.location}`}
                 </p>
+                {p.link && (
+                  <a href={p.link} target="_blank" rel="noreferrer"
+                     className="inline-flex items-center gap-1 text-sm text-navy-600 hover:text-navy-400 font-medium mt-3">
+                    View paper <ExternalLink size={12} />
+                  </a>
+                )}
                 {p.tags && (
                   <div className="flex flex-wrap gap-1.5 mt-3">
                     {p.tags.map(t => <span key={t} className="badge-tag !text-[11px]">{t}</span>)}

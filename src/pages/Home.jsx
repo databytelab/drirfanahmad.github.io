@@ -7,6 +7,7 @@ import {
   Calculator, BarChart3, Coffee, Binary, GitMerge, Terminal,
   Box, Cloud, PieChart, Eye, MapPin, Calendar, PlayCircle,
   ExternalLink, Mail, Bot, Lightbulb, Target, Rocket,
+  CheckCircle, AlertCircle,
 } from 'lucide-react'
 import { profile } from '../data/profile'
 import { publications } from '../data/publications'
@@ -65,8 +66,30 @@ export default function Home() {
   const latestPost = posts[0]
   const [statsVisible, setStatsVisible] = useState(false)
   const statsRef = useRef(null)
+  // newsletter: 'idle' | 'sending' | 'success' | 'error'
+  const [newsletter, setNewsletter] = useState('idle')
 
   useReveal()
+
+  const handleNewsletter = async (e) => {
+    e.preventDefault()
+    setNewsletter('sending')
+    try {
+      const res = await fetch(profile.formEndpoint, {
+        method: 'POST',
+        body: new FormData(e.target),
+        headers: { Accept: 'application/json' },
+      })
+      if (res.ok) {
+        setNewsletter('success')
+        e.target.reset()
+      } else {
+        setNewsletter('error')
+      }
+    } catch {
+      setNewsletter('error')
+    }
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -111,7 +134,7 @@ export default function Home() {
                 {profile.title} · {profile.affiliation}
               </p>
               <p className="text-white/60 mb-7 max-w-2xl mx-auto lg:mx-0 fade-up fade-up-3">
-                {profile.tagline} · IBM Certified Data Scientist
+                {profile.tagline} · IBM Data Science Professional Certificate
               </p>
               <div className="flex flex-wrap gap-3 justify-center lg:justify-start fade-up fade-up-4">
                 <a href={profile.cvUrl} className="btn-hero" download>
@@ -431,15 +454,26 @@ export default function Home() {
             Monthly updates on new publications, ML tutorials, scholarship opportunities, and YouTube content. No spam.
           </p>
           <form
-            action="https://formspree.io/f/YOUR_FORM_ID"
-            method="POST"
+            onSubmit={handleNewsletter}
             className="max-w-md mx-auto flex gap-2 flex-wrap justify-center"
           >
-            <input type="email" name="email" required placeholder="your@email.com"
+            <input type="email" name="email" required aria-label="Your email address" placeholder="your@email.com"
               className="flex-1 min-w-[220px] px-4 py-3 rounded-md border border-gray-300 focus:border-navy-600 focus:outline-none focus:ring-2 focus:ring-navy-400/30 text-sm bg-white" />
-            <button type="submit" className="btn-primary !py-3">Subscribe</button>
+            <button type="submit" disabled={newsletter === 'sending'} className="btn-primary !py-3 disabled:opacity-60 disabled:cursor-not-allowed">
+              {newsletter === 'sending' ? 'Subscribing…' : 'Subscribe'}
+            </button>
           </form>
-          <p className="text-xs text-muted mt-4">Join researchers and students from 20+ countries.</p>
+          {newsletter === 'success' ? (
+            <p className="text-sm text-emerald-700 mt-4 inline-flex items-center gap-1.5">
+              <CheckCircle size={14} /> You're subscribed — thank you!
+            </p>
+          ) : newsletter === 'error' ? (
+            <p className="text-sm text-red-600 mt-4 inline-flex items-center gap-1.5">
+              <AlertCircle size={14} /> Subscription failed. Please try again later.
+            </p>
+          ) : (
+            <p className="text-xs text-muted mt-4">Join researchers and students from 20+ countries.</p>
+          )}
         </div>
       </section>
     </>

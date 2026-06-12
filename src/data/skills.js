@@ -42,13 +42,13 @@ export const focusAreas = [
   {
     icon: 'Atom',
     title: 'Chaos Theory & Dynamical Systems',
-    description: 'Discovering hidden and self-excited attractors in jerk, hyperjerk, and Chua-based circuits. Twelve Q1 publications in IJBC, IEEE Access, and Physica D.',
+    description: 'Discovering hidden and self-excited attractors in jerk, hyperjerk, and Chua-based circuits. Multiple Q1 publications in IJBC, IEEE Access, and Physica D.',
     accent: 'navy',
   },
   {
     icon: 'GraduationCap',
     title: 'Teaching & Curriculum Design',
-    description: 'Eight years across four countries teaching CS — algorithms, data mining, software engineering, and ML. IBM Certified Data Scientist with active YouTube channel.',
+    description: 'Eight years across four countries teaching CS — algorithms, databases, computer vision, and machine learning. IBM Data Science Professional Certificate holder with an active YouTube channel.',
     accent: 'navy-light',
   },
 ]

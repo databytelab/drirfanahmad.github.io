@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Lightbulb, Target, Rocket } from 'lucide-react'
+import { Calendar, MapPin, Lightbulb, Target, Rocket, CheckCircle2 } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { teaching } from '../data/teaching'
 import { philosophy } from '../data/skills'
@@ -12,10 +12,9 @@ export default function Teaching() {
   return (
     <>
       <PageHero
-        variant="teaching"
         label="Teaching"
         title="Courses & Academic Mentorship"
-        description="Eight years of university teaching across New Zealand, Ireland/China, and Thailand. Specializing in machine learning, data mining, software engineering, and computer architecture."
+        description="Over eight years of university teaching across New Zealand, Ireland, China, and Thailand. Currently delivering machine learning, computer vision, databases, and systems & networks on the University of Waikato–Hainan joint programme."
       />
 
       {/* TEACHING PHILOSOPHY */}
@@ -60,6 +59,17 @@ export default function Teaching() {
                   <span className="inline-flex items-center gap-1 font-mono text-amber-600"><Calendar size={13} />{inst.period}</span>
                 </div>
               </div>
+
+              {inst.highlights && (
+                <ul className="mb-6 space-y-2.5 max-w-3xl">
+                  {inst.highlights.map((h, k) => (
+                    <li key={k} className="flex items-start gap-2.5 text-sm text-body leading-relaxed">
+                      <CheckCircle2 size={16} className="text-amber-500 flex-shrink-0 mt-0.5" />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
               <div className="grid md:grid-cols-2 gap-4">
                 {inst.courses.map((c, j) => (

@@ -93,8 +93,11 @@ out = out.replace(/::image\{([^}]+)\}/g, (_, attrs) => {
   // Stats: :::stats\n87% — Label\n3 hrs — Label\n:::
   out = out.replace(/:::stats\n([\s\S]*?)\n:::/g, (_, body) => {
     const items = body.trim().split('\n').map(line => {
-      const [number, ...rest] = line.split('—')
-      return `<div class="blog-stat-box"><span class="blog-stat-number">${number.trim()}</span><span class="blog-stat-label">${rest.join('—').trim()}</span></div>`
+      // Split on the first em-dash, en-dash, or hyphen surrounded by spaces.
+      const idx = line.search(/\s[—–-]\s/)
+      const number = idx >= 0 ? line.slice(0, idx).trim() : line.trim()
+      const label = idx >= 0 ? line.slice(idx).replace(/^\s[—–-]\s/, '').trim() : ''
+      return `<div class="blog-stat-box"><span class="blog-stat-number">${number}</span><span class="blog-stat-label">${label}</span></div>`
     }).join('')
     return `<div class="blog-stat-row">${items}</div>`
   })

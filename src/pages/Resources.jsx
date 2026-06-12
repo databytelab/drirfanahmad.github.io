@@ -5,6 +5,7 @@ import {
 } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { resources, resourceCategories } from '../data/resources'
+import { profile } from '../data/profile'
 import { useReveal } from '../hooks/useReveal'
 
 const iconMap = {
@@ -101,7 +102,6 @@ export default function Resources() {
   return (
     <>
       <PageHero
-        variant="resources"
         label="Resources"
         title="Opportunities & Curated Links"
         description="Scholarships, PhD positions, postdoc openings, datasets, and learning resources I personally recommend. Updated regularly as I encounter new opportunities."
@@ -150,7 +150,7 @@ export default function Resources() {
           <p className="text-body max-w-2xl mx-auto mb-6">
             If you have a scholarship, position, or resource that would help students and researchers — let me know and I'll add it here.
           </p>
-          <a href="mailto:Irfan.Ahmad@waikato.ac.nz" className="btn-primary">
+          <a href={`mailto:${profile.email}`} className="btn-primary">
             Suggest a resource
           </a>
         </div>

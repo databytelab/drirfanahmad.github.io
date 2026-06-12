@@ -23,8 +23,20 @@ export const researchInterests = [
   },
   {
     icon: 'Atom',
-    title: 'Chaos Theory',
-    description: 'Hidden and self-excited attractors in jerk, hyperjerk, and Chua-based circuits. Twelve+ Q1 publications in IJBC, IEEE Access, and Physica D.',
+    title: 'Nonlinear Dynamics & Chaos',
+    description: 'Hidden and self-excited attractors in jerk, hyperjerk, and Chua-based circuits. Multiple Q1 publications in IJBC, IEEE Access, and Physica D.',
+    accent: 'amber',
+  },
+  {
+    icon: 'Search',
+    title: 'Pattern Mining',
+    description: 'Discovering structure in complex data — classification, clustering, and association-rule mining applied to real-world decision-support problems.',
+    accent: 'navy',
+  },
+  {
+    icon: 'GraduationCap',
+    title: 'AI in Education',
+    description: 'Rethinking CS assessment for the AI era — including CodeVouch, a tool that distinguishes genuine code comprehension from unreviewed AI-generated work.',
     accent: 'amber',
   },
 ]

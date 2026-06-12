@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { Menu, X, Home as HomeIcon } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)

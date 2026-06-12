@@ -40,10 +40,6 @@
     @apply inline-flex items-center gap-2 border border-white/40 hover:border-white text-white hover:bg-white/10 px-5 py-2.5 rounded-md text-sm font-medium transition-all duration-200;
   }
 
-  .card {
-    @apply relative bg-white border border-gray-200 rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
-  }
-
   /* Premium animated gradient border on hover */
   .card-gradient {
     @apply relative bg-white rounded-xl p-6 transition-all duration-300 hover:-translate-y-1;
@@ -194,58 +190,6 @@
   background-size: 40px 40px;
   -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 75%);
   mask-image: radial-gradient(ellipse at center, black 25%, transparent 75%);
-}
-
-/* ===== Page hero patterns (per-page distinct visuals) ===== */
-.pattern-research {
-  background-color: #1A3A5C;
-  background-image:
-    radial-gradient(ellipse at 25% 60%, rgba(232,160,32,0.18) 0%, transparent 55%),
-    repeating-linear-gradient(45deg, transparent, transparent 22px, rgba(255,255,255,0.04) 22px, rgba(255,255,255,0.04) 23px);
-}
-.pattern-teaching {
-  background: linear-gradient(135deg, #1A3A5C 0%, #2D6A9F 100%);
-  position: relative;
-}
-.pattern-teaching::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 100% 36px;
-  pointer-events: none;
-}
-.pattern-projects {
-  background-color: #0F2238;
-  background-image:
-    linear-gradient(rgba(232,160,32,0.10) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(232,160,32,0.10) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-.pattern-resources {
-  background-color: #1F4F7E;
-  background-image: radial-gradient(circle at 50% 40%, rgba(232,160,32,0.28) 0%, transparent 60%);
-}
-.pattern-blog {
-  background-color: #142E4A;
-  background-image: repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 8px);
-}
-
-/* Floating decorative elements for page heros */
-.hero-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  pointer-events: none;
-  opacity: 0.4;
-}
-.hero-symbol {
-  position: absolute;
-  color: rgba(232,160,32,0.25);
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  pointer-events: none;
-  user-select: none;
 }
 
 /* ===== Markdown blog post styles — editorial navy/amber theme ===== */

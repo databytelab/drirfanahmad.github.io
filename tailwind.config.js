@@ -17,7 +17,7 @@ export default {
         },
         ink: '#1A1A1A',
         body: '#4A5568',
-        muted: '#718096',
+        muted: '#5A6678',
         amber: {
           400: '#F2B843',
           500: '#E8A020',

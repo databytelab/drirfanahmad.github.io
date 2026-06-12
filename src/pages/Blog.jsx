@@ -30,7 +30,6 @@ export default function Blog() {
   return (
     <>
       <PageHero
-        variant="blog"
         label="Blog"
         title="Tutorials & Insights"
         description="Written tutorials on machine learning and deep learning, plus YouTube video explainers from the Dataverse channel. Aimed at students and ML practitioners."
@@ -54,6 +53,7 @@ export default function Blog() {
                   type="text"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
+                  aria-label="Search blog posts"
                   placeholder="Search posts..."
                   className="w-full pl-10 pr-4 py-2.5 rounded-full border border-gray-300 focus:border-navy-600 focus:outline-none focus:ring-2 focus:ring-navy-400/30 text-sm bg-white"
                 />

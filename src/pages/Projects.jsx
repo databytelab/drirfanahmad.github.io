@@ -8,7 +8,6 @@ export default function Projects() {
   return (
     <>
       <PageHero
-        variant="projects"
         label="Projects"
         title="Research & Applied ML Projects"
         description="A selection of supervised student projects and personal research work spanning deep learning, fraud detection, signal processing, and power systems."
