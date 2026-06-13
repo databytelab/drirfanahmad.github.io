@@ -4,7 +4,7 @@ import { profile } from '../data/profile'
 
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t border-gray-200 bg-navy-50">
+    <footer className="mt-12 border-t border-gray-200 bg-navy-50">
       <div className="container-page py-14">
         <div className="grid md:grid-cols-4 gap-10">
           <div className="md:col-span-2">

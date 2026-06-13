@@ -4,7 +4,7 @@ date: "2026-06-11"
 excerpt: "13 free courses covering everything from AI basics to building production-grade Claude applications and MCP servers. No credit card. No Claude subscription. Just an email."
 tags: ["AI Education", "Free Courses", "Claude", "Machine Learning", "Career"]
 cover: ""
-type: "article"
+type: "resource"
 ---
 ::image{src=/blog/anthropic-academy-free-courses/01.jpg caption="The Anthropic Academy course catalogue at anthropic.skilljar.com"}
 

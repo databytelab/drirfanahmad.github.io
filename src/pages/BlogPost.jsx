@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { Calendar, Clock, ArrowLeft, Tag } from 'lucide-react'
-import { getPostBySlug, posts } from '../lib/blogLoader'
+import { Calendar, Clock, ArrowLeft } from 'lucide-react'
+import { getPostBySlug, getCategory, posts } from '../lib/blogLoader'
 
 export default function BlogPost() {
   const { slug } = useParams()
@@ -9,6 +9,7 @@ export default function BlogPost() {
   if (!post) return <Navigate to="/blog" replace />
 
   const otherPosts = posts.filter(p => p.slug !== slug).slice(0, 3)
+  const category = getCategory(post.type)
 
   return (
     <>
@@ -25,9 +26,12 @@ export default function BlogPost() {
       </header>
 
       {/* Post hero */}
-      <section className="bg-[#FAFAF7] border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-6 md:px-10 py-12 md:py-16">
+      <section className="bg-cream border-b border-gray-200">
+        <div className="max-w-3xl mx-auto px-6 md:px-10 py-12 md:py-16">
           <div className="flex items-center gap-4 mb-6 flex-wrap">
+            <span className={`text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded ${category.badge}`}>
+              {category.label}
+            </span>
             <span className="inline-flex items-center gap-1 font-mono text-xs text-amber-600 font-semibold">
               <Calendar size={12} />
               {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -41,7 +45,7 @@ export default function BlogPost() {
             {post.title}
           </h1>
           {post.excerpt && (
-            <p className="text-lg text-body italic border-l-3 pl-5 max-w-2xl" style={{ borderLeftColor: '#E8A020', borderLeftWidth: '3px' }}>
+            <p className="text-lg text-body italic border-l-amber-500 border-l-[3px] pl-5 max-w-2xl">
               {post.excerpt}
             </p>
           )}
@@ -51,10 +55,28 @@ export default function BlogPost() {
         </div>
       </section>
 
+      {/* YouTube embed (optional) */}
+      {post.youtubeId && (
+        <section className="bg-white">
+          <div className="max-w-3xl mx-auto px-6 md:px-10 py-6">
+            <div className="relative w-full overflow-hidden rounded-xl shadow-md" style={{ aspectRatio: '16 / 9' }}>
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src={`https://www.youtube.com/embed/${post.youtubeId}`}
+                title={post.title}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Cover image (optional) */}
       {post.cover && (
         <section className="bg-white">
-          <div className="max-w-4xl mx-auto px-6 md:px-10 py-6">
+          <div className="max-w-3xl mx-auto px-6 md:px-10 py-6">
             <img src={post.cover} alt={post.title} className="w-full rounded-xl shadow-md" />
           </div>
         </section>
@@ -62,7 +84,7 @@ export default function BlogPost() {
 
         <article className="blog-post-page">
           <div
-            className="max-w-4xl mx-auto px-6 md:px-10 py-10 blog-prose"
+            className={`max-w-3xl mx-auto px-6 md:px-10 py-10 blog-prose blog-prose--${post.type || 'essay'}`}
             dangerouslySetInnerHTML={{ __html: post.html }}
           />
         </article>
@@ -74,17 +96,25 @@ export default function BlogPost() {
             <p className="section-label">Keep reading</p>
             <h2 className="mb-8">More from the blog</h2>
             <div className="grid md:grid-cols-3 gap-5">
-              {otherPosts.map(p => (
-                <Link key={p.slug} to={`/blog/${p.slug}`} className="card-gradient block group">
-                  <span className="font-mono text-xs text-amber-600 font-semibold">
-                    {new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
-                  </span>
-                  <h3 className="font-serif text-lg text-ink mt-2 mb-2 leading-snug group-hover:text-navy-600 transition-colors">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-body line-clamp-3">{p.excerpt}</p>
-                </Link>
-              ))}
+              {otherPosts.map(p => {
+                const c = getCategory(p.type)
+                return (
+                  <Link key={p.slug} to={`/blog/${p.slug}`} className="card-gradient block group">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className={`text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded ${c.badge}`}>
+                        {c.label}
+                      </span>
+                      <span className="font-mono text-xs text-amber-600 font-semibold">
+                        {new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
+                      </span>
+                    </div>
+                    <h3 className="font-serif text-lg text-ink mt-2 mb-2 leading-snug group-hover:text-navy-600 transition-colors">
+                      {p.title}
+                    </h3>
+                    <p className="text-sm text-body line-clamp-3">{p.excerpt}</p>
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </section>

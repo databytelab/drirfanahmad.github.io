@@ -59,7 +59,7 @@ export default function Nav() {
 
         <button
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          className="lg:hidden text-navy-600 p-2 -mr-2"
+          className="lg:hidden text-navy-600 p-3 -mr-2"
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -76,7 +76,7 @@ export default function Nav() {
                 end={item.end}
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
-                  `text-sm py-2.5 px-3 rounded-md ${
+                  `text-sm py-3 px-3 rounded-md ${
                     isActive ? 'text-navy-600 font-semibold bg-navy-50' : 'text-body'
                   }`
                 }

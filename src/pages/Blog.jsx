@@ -1,8 +1,8 @@
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { Calendar, Clock, Tag, ArrowRight, Search } from 'lucide-react'
 import PageHero from '../components/PageHero'
-import { posts } from '../lib/blogLoader'
+import { posts, getCategory } from '../lib/blogLoader'
 import { useReveal } from '../hooks/useReveal'
 
 export default function Blog() {
@@ -32,7 +32,7 @@ export default function Blog() {
       <PageHero
         label="Blog"
         title="Tutorials & Insights"
-        description="Written tutorials on machine learning and deep learning, plus YouTube video explainers from the Dataverse channel. Aimed at students and ML practitioners."
+        description="Written tutorials on machine learning and deep learning, plus YouTube video explainers from the DataverseAI channel. Aimed at students and ML practitioners."
       />
 
       <section className="container-page py-12">
@@ -80,32 +80,50 @@ export default function Blog() {
               <p className="text-body text-center py-12">No posts match your search.</p>
             ) : (
               <ul className="space-y-6">
-                {filtered.map((post, i) => (
-                  <li key={post.slug} className={`reveal reveal-${Math.min(i + 1, 4)}`}>
-                    <Link to={`/blog/${post.slug}`} className="card-gradient block group">
-                      <div className="flex items-center gap-4 mb-3 flex-wrap">
-                        <span className="inline-flex items-center gap-1 font-mono text-xs text-amber-600 font-semibold">
-                          <Calendar size={12} />
-                          {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                        </span>
-                        <span className="inline-flex items-center gap-1 text-xs text-muted">
-                          <Clock size={12} />
-                          {post.readTime} min read
-                        </span>
-                      </div>
-                      <h2 className="font-serif text-2xl md:text-3xl text-ink mb-3 leading-tight group-hover:text-navy-600 transition-colors">
-                        {post.title}
-                      </h2>
-                      <p className="text-body mb-4 leading-relaxed">{post.excerpt}</p>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {(post.tags || []).map(t => <span key={t} className="badge-tag !text-[11px]">{t}</span>)}
-                      </div>
-                      <span className="inline-flex items-center gap-1 text-sm text-navy-600 font-medium group-hover:gap-2 transition-all">
-                        Read article <ArrowRight size={14} />
-                      </span>
-                    </Link>
-                  </li>
-                ))}
+                {filtered.map((post, i) => {
+                  const cat = getCategory(post.type)
+                  const featured = i === 0
+                  return (
+                    <li key={post.slug} className={`reveal reveal-${Math.min(i + 1, 4)}`}>
+                      <Link
+                        to={`/blog/${post.slug}`}
+                        className={`card-gradient block group ${featured && post.cover ? 'md:grid md:grid-cols-[1fr_300px] md:gap-8 md:items-center' : ''}`}
+                      >
+                        <div>
+                          <div className="flex items-center gap-3 mb-3 flex-wrap">
+                            <span className={`text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded ${cat.badge}`}>
+                              {cat.label}
+                            </span>
+                            <span className="inline-flex items-center gap-1 font-mono text-xs text-amber-600 font-semibold">
+                              <Calendar size={12} />
+                              {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </span>
+                            <span className="inline-flex items-center gap-1 text-xs text-muted">
+                              <Clock size={12} />
+                              {post.readTime} min read
+                            </span>
+                          </div>
+                          <h2 className={`font-serif text-ink mb-3 leading-tight group-hover:text-navy-600 transition-colors ${featured ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'}`}>
+                            {post.title}
+                          </h2>
+                          <p className="text-body mb-4 leading-relaxed line-clamp-3">{post.excerpt}</p>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {(post.tags || []).map(t => <span key={t} className="badge-tag !text-[11px]">{t}</span>)}
+                          </div>
+                          <span className="inline-flex items-center gap-1 text-sm text-navy-600 font-medium group-hover:gap-2 transition-all">
+                            Read article <ArrowRight size={14} />
+                          </span>
+                        </div>
+                        {featured && post.cover && (
+                          <div className="hidden md:block overflow-hidden rounded-lg">
+                            <img src={post.cover} alt={post.title} loading="lazy"
+                              className="w-full h-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-500" />
+                          </div>
+                        )}
+                      </Link>
+                    </li>
+                  )
+                })}
               </ul>
             )}
           </>

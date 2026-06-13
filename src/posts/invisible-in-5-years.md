@@ -4,7 +4,7 @@ date: "2026-05-31"
 excerpt: "A practical guide to visibility, content systems, and knowledge compounding — for academics who have more expertise than the internet knows about."
 tags: ["Visibility", "Content Systems", "AI Tools", "YouTube Strategy", "Career"]
 cover: "/blog/invisible-in-5-years/hero.jpg"
-type: "article"
+type: "essay"
 youtubeId: ""
 ---
 

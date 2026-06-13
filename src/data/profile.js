@@ -15,16 +15,16 @@ export const profile = {
   stats: {
     hIndex: 6,
     citations: 73,
-    publications: 22,
+    publications: 23,
     rgScore: 115,
     countries: 5,
   },
   socials: {
     googleScholar: 'https://scholar.google.com/',
-    researchGate: 'https://www.researchgate.net/',
+    researchGate: 'https://www.researchgate.net/profile/Irfan-Ahmad-9',
     github: 'https://github.com/databytelab',
-    linkedin: 'https://www.linkedin.com/',
-    youtube: 'https://www.youtube.com/',
+    linkedin: 'https://www.linkedin.com/in/irfanahmad2/',
+    youtube: 'https://www.youtube.com/@dataverseai1',
     waikatoIRIS: 'https://profiles.waikato.ac.nz/',
   },
   researchInterests: [

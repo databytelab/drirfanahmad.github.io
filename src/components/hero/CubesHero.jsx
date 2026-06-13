@@ -11,6 +11,8 @@ export default function CubesHero({ colorScheme = 'navy' }) {
   useEffect(() => {
     if (!mountRef.current) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    // Skip the WebGL animation on small screens — saves battery/CPU on phones.
+    if (window.matchMedia('(max-width: 768px)').matches) return
 
     const mount = mountRef.current
     const width = mount.clientWidth

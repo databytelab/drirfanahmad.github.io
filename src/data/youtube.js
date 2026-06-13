@@ -1,32 +1,30 @@
 /**
  * YouTube videos featured on the homepage.
  * Get videoId from the URL: https://youtube.com/watch?v=VIDEO_ID
+ * `duration` is optional — leave it out if you don't want the duration pill.
  */
 export const videos = [
   {
-    videoId: 'dQw4w9WgXcQ',
-    title: 'Self-Attention Mechanism Explained with Real Numbers',
-    description: 'A step-by-step walkthrough of the transformer attention computation with actual numerical examples.',
-    publishedAt: '2026-05-15',
-    duration: '14:23',
-    tags: ['Transformers', 'Attention', 'Deep Learning'],
+    videoId: 'lXVamS3k2_4',
+    title: 'Anthropic Academy: Free Claude Courses & Certificates',
+    description: 'A walkthrough of Anthropic Academy — the free Claude courses, the five learning tracks, and how to earn official certificates.',
+    publishedAt: 'Jun 7, 2026',
+    tags: ['Claude', 'AI Education', 'Certificates'],
   },
   {
-    videoId: 'dQw4w9WgXcQ',
-    title: 'Why ResNet Skip Connections Actually Work',
-    description: 'The mathematical intuition behind residual connections — going beyond the surface-level explanation.',
-    publishedAt: '2026-04-22',
-    duration: '11:48',
-    tags: ['CNN', 'ResNet', 'Architecture'],
+    videoId: 'GPDKWew4K0I',
+    title: 'Data Preprocessing in Python — Complete Hands-On Tutorial for Machine Learning',
+    description: 'A complete hands-on tutorial on data preprocessing for ML in Python: handling missing values, encoding, scaling, and train/test splits.',
+    publishedAt: 'Oct 18, 2023',
+    tags: ['Python', 'Data Preprocessing', 'Machine Learning'],
   },
   {
-    videoId: 'dQw4w9WgXcQ',
-    title: 'Building a CNN from Scratch in Keras',
-    description: 'Live-coded walkthrough — not just the code, but the thinking process behind each architectural decision.',
-    publishedAt: '2026-03-10',
-    duration: '22:15',
-    tags: ['Keras', 'CNN', 'Tutorial'],
+    videoId: 'JGWqb5nNudE',
+    title: 'Master Data Visualization with Python — A Hands-On Guide using the Iris Dataset',
+    description: 'A practical guide to data visualization in Python using the classic Iris dataset — distributions, relationships, and reading the plots.',
+    publishedAt: 'Jul 30, 2023',
+    tags: ['Python', 'Data Visualization', 'Pandas'],
   },
 ]
 
-export const youtubeChannelUrl = 'https://www.youtube.com/@dataverse'
+export const youtubeChannelUrl = 'https://www.youtube.com/@dataverseai1'

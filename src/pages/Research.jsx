@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import {
-  Search, ExternalLink, FileText, BookOpen,
+  Search, ExternalLink, FileText, BookOpen, Download,
   Brain, Network, ScanEye, Atom, GraduationCap,
 } from 'lucide-react'
 import PageHero from '../components/PageHero'
@@ -135,12 +135,19 @@ export default function Research() {
                 <div className="flex items-center gap-3 flex-wrap mb-3">
                   <span className="font-mono text-sm text-amber-600 font-semibold">{p.year}</span>
                   {p.rank && <span className={p.rank === 'Q1' ? 'badge-q1' : 'badge-q2'}>{p.rank}</span>}
+                  {p.impact && (
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-navy-50 text-navy-500 border border-navy-100">
+                      IF {p.impact}
+                    </span>
+                  )}
                   <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider text-muted font-semibold">
                     {p.type === 'journal' ? <BookOpen size={11} /> : <FileText size={11} />}
                     {p.type}
                   </span>
-                  {p.citations && (
-                    <span className="text-xs text-muted">· {p.citations} citation{p.citations > 1 ? 's' : ''}</span>
+                  {p.status && (
+                    <span className="text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded bg-amber-500/15 text-amber-700">
+                      {p.status}
+                    </span>
                   )}
                 </div>
                 <h3 className="font-serif text-lg text-ink mb-2 leading-snug">{p.title}</h3>
@@ -148,11 +155,21 @@ export default function Research() {
                 <p className="text-sm text-muted">
                   {p.venue}{p.volume && `, ${p.volume}`}{p.location && ` · ${p.location}`}
                 </p>
-                {p.link && (
-                  <a href={p.link} target="_blank" rel="noreferrer"
-                     className="inline-flex items-center gap-1 text-sm text-navy-600 hover:text-navy-400 font-medium mt-3">
-                    View paper <ExternalLink size={12} />
-                  </a>
+                {(p.doi || p.pdf) && (
+                  <div className="flex flex-wrap items-center gap-2 mt-4">
+                    {p.doi && (
+                      <a href={p.doi} target="_blank" rel="noreferrer"
+                         className="btn-secondary !py-1.5 !px-3 !text-xs">
+                        DOI / Journal <ExternalLink size={12} />
+                      </a>
+                    )}
+                    {p.pdf && (
+                      <a href={p.pdf} target="_blank" rel="noreferrer"
+                         className="btn-secondary !py-1.5 !px-3 !text-xs">
+                        <Download size={12} /> PDF
+                      </a>
+                    )}
+                  </div>
                 )}
                 {p.tags && (
                   <div className="flex flex-wrap gap-1.5 mt-3">

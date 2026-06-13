@@ -13,10 +13,11 @@ export const teaching = [
       'Run professional-development seminars (50+ attendees) on scholarships and global career readiness for international students.',
     ],
     courses: [
-      { code: 'COMPX310', name: 'Machine Learning', semester: '2025 – Present', topics: ['Supervised Learning', 'Model Evaluation', 'Neural Networks', 'Scikit-learn'] },
-      { code: 'COMPX326', name: 'Computer Vision', semester: '2025 – Present', topics: ['Image Classification', 'Transfer Learning', 'CNNs', 'OpenCV'] },
-      { code: 'COMPX234', name: 'Systems and Networks', semester: '2025 – Present', topics: ['Operating Systems', 'Networking', 'Concurrency', 'Linux'] },
-      { code: 'COMPX224', name: 'Introduction to Databases and Web Development', semester: '2025 – Present', topics: ['SQL', 'Database Design', 'Web Development', 'HTML/CSS'] },
+      { code: 'COMPX310', name: 'Machine Learning', semester: '2025 – Present', topics: ['Supervised Learning', 'Model Evaluation', 'Neural Networks', 'Scikit-learn'], outline: 'https://paperoutlines.waikato.ac.nz/outline/COMPX310-25B%20(HAM)' },
+      { code: 'COMPX326', name: 'Computer Vision', semester: '2025 – Present', topics: ['Image Classification', 'Transfer Learning', 'CNNs', 'OpenCV'], outline: 'https://paperoutlines.waikato.ac.nz/outline/COMPX326-26A%20(HAM)' },
+      { code: 'COMPX234', name: 'Systems and Networks', semester: '2025 – Present', topics: ['Operating Systems', 'Networking', 'Concurrency', 'Linux'], outline: 'https://paperoutlines.waikato.ac.nz/outline/COMPX234-25A%20(HAM)' },
+      { code: 'COMPX225', name: 'Introduction to Databases and Web Development', semester: '2025 – Present', topics: ['SQL', 'Database Design', 'Web Development', 'HTML/CSS'], outline: 'https://paperoutlines.waikato.ac.nz/outline/COMPX225-25B%20(HAM)' },
+      { code: 'CSMAX175', name: 'Introduction to Cyber Security', semester: '2025 – Present', topics: ['Security Fundamentals', 'Threats & Attacks', 'Cryptography Basics', 'Network Security'], outline: 'https://paperoutlines.waikato.ac.nz/outline/CSMAX175-25A%20(HWC)' },
     ],
   },
   {
@@ -30,9 +31,10 @@ export const teaching = [
       'Supervised a final-year ML project forecasting air quality in Fuzhou from historical environmental data.',
     ],
     courses: [
-      { code: 'CS211FZ', name: 'Algorithms and Data Structures 2', semester: 'Spring 2024', topics: ['Algorithms', 'Hash Tables', 'BST', 'Graphs'] },
-      { code: 'EE180FZ', name: 'Critical Skills Project', semester: '2023 – 2024', topics: ['Project Management', 'Teamwork', 'Engineering Design'] },
-      { code: 'EE299FZ', name: 'Analogue Electronics Project', semester: '2023 – 2024', topics: ['Electronics', 'Lab Work', 'Technical Communication'] },
+      // Maynooth course-outline URLs — paste the link into each `outline` field when ready.
+      { code: 'CS211FZ', name: 'Algorithms and Data Structures 2', semester: 'Spring 2024', topics: ['Algorithms', 'Hash Tables', 'BST', 'Graphs'], outline: '' },
+      { code: 'EE180FZ', name: 'Critical Skills Project', semester: '2023 – 2024', topics: ['Project Management', 'Teamwork', 'Engineering Design'], outline: '' },
+      { code: 'EE299FZ', name: 'Analogue Electronics Project', semester: '2023 – 2024', topics: ['Electronics', 'Lab Work', 'Technical Communication'], outline: '' },
     ],
   },
   {

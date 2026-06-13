@@ -19,7 +19,7 @@
   }
   h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); }
   h2 { font-size: clamp(1.625rem, 3.5vw, 2.25rem); }
-  h3 { font-size: 1.375rem; }
+  h3 { font-size: clamp(1.2rem, 2vw, 1.375rem); }
   a { @apply transition-colors duration-200; }
   ::selection { @apply bg-navy-600 text-white; }
 }
@@ -99,8 +99,6 @@
 .fade-up-2 { animation-delay: 0.15s; }
 .fade-up-3 { animation-delay: 0.25s; }
 .fade-up-4 { animation-delay: 0.35s; }
-.fade-up-5 { animation-delay: 0.45s; }
-.fade-up-6 { animation-delay: 0.55s; }
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -121,8 +119,6 @@
 .reveal-2 { transition-delay: 0.12s; }
 .reveal-3 { transition-delay: 0.19s; }
 .reveal-4 { transition-delay: 0.26s; }
-.reveal-5 { transition-delay: 0.33s; }
-.reveal-6 { transition-delay: 0.40s; }
 
 /* ===== Skills marquee — pure CSS, no Tailwind dependency ===== */
 @keyframes scroll-marquee {
@@ -150,13 +146,6 @@
   100% { background-position: 200% 50%; }
 }
 
-/* ===== Card glow effects ===== */
-@keyframes glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-.animate-glow { animation: glow 2.5s ease-in-out infinite; }
-
 /* ===== Gradient sweep (used in About hero) ===== */
 @keyframes gradient {
   0%, 100% { background-position: 0% 50%; }
@@ -166,13 +155,6 @@
   background-size: 200% 200%;
   animation: gradient 8s ease infinite;
 }
-
-/* ===== Float (used in 3D hero photo glow) ===== */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.animate-float { animation: float 6s ease-in-out infinite; }
 
 /* ===== Hero canvas positioning ===== */
 .hero-canvas {
@@ -224,9 +206,10 @@
   line-height: 1.82;
   color: #1A1A1A;
   background: #FAFAF7;
+  max-width: 72ch;
 }
 
-/* Drop cap — only on the very first paragraph */
+/* Drop cap — only on the very first paragraph (essay treatment) */
 .blog-prose > p:first-of-type::first-letter {
   font-family: 'Lora', Georgia, serif;
   font-size: 4.5rem;
@@ -235,6 +218,28 @@
   line-height: 0.85;
   margin: 6px 10px -4px 0;
   color: #1A3A5C;
+}
+
+/* ── Category treatments ─────────────────────────────────────── */
+/* Technical Tutorial — documentation feel: sans body, tighter, no drop cap */
+.blog-prose--tutorial {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.72;
+}
+.blog-prose--tutorial > p:first-of-type::first-letter,
+.blog-prose--resource > p:first-of-type::first-letter {
+  font-size: inherit;
+  font-weight: inherit;
+  float: none;
+  line-height: inherit;
+  margin: 0;
+  color: inherit;
+}
+/* Resources & Guides — scannable: lead callout sits flush, lighter rhythm */
+.blog-prose--resource {
+  font-size: 1.03125rem;
+  line-height: 1.78;
 }
 
 .blog-prose p { margin-bottom: 1.5em; }
@@ -281,6 +286,59 @@
   padding: 0.15em 0.45em;
   border-radius: 4px;
   font-family: 'JetBrains Mono', monospace;
+}
+
+/* Fenced code blocks — navy "terminal" panel for tutorials */
+.blog-prose pre {
+  background: #0F2238;
+  color: #E6EDF5;
+  border: 1px solid #1A3A5C;
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin: 1.8rem 0;
+  overflow-x: auto;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  -webkit-overflow-scrolling: touch;
+}
+.blog-prose pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Tables — comparison grids common in ML posts */
+.blog-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.92rem;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.blog-prose th,
+.blog-prose td {
+  border: 1px solid #C8D9EC;
+  padding: 10px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+.blog-prose th {
+  background: #1A3A5C;
+  color: #fff;
+  font-weight: 600;
+}
+.blog-prose tbody tr:nth-child(even) { background: #F4F7FA; }
+
+/* Standard markdown blockquote (distinct from the custom :::pullquote) */
+.blog-prose blockquote {
+  border-left: 4px solid #C8D9EC;
+  padding: 4px 0 4px 20px;
+  margin: 1.8rem 0;
+  color: #4A5568;
+  font-style: italic;
 }
 
 .blog-prose hr {

@@ -1,4 +1,4 @@
-import { Calendar, MapPin, Lightbulb, Target, Rocket, CheckCircle2 } from 'lucide-react'
+import { Calendar, MapPin, Lightbulb, Target, Rocket, CheckCircle2, FileText, FolderOpen } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { teaching } from '../data/teaching'
 import { philosophy } from '../data/skills'
@@ -82,6 +82,22 @@ export default function Teaching() {
                     {c.topics && (
                       <div className="flex flex-wrap gap-1.5">
                         {c.topics.map(t => <span key={t} className="badge-tag !text-[11px]">{t}</span>)}
+                      </div>
+                    )}
+                    {(c.outline || c.material) && (
+                      <div className="flex flex-wrap gap-4 mt-4 pt-3 border-t border-gray-100">
+                        {c.outline && (
+                          <a href={c.outline} target="_blank" rel="noreferrer"
+                             className="inline-flex items-center gap-1 text-xs text-navy-600 hover:text-navy-400 font-medium">
+                            <FileText size={12} /> Course outline
+                          </a>
+                        )}
+                        {c.material && (
+                          <a href={c.material} target="_blank" rel="noreferrer"
+                             className="inline-flex items-center gap-1 text-xs text-navy-600 hover:text-navy-400 font-medium">
+                            <FolderOpen size={12} /> Course material
+                          </a>
+                        )}
                       </div>
                     )}
                   </div>

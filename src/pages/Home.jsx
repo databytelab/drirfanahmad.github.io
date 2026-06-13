@@ -106,13 +106,12 @@ export default function Home() {
       <section className={`relative overflow-hidden ${backgroundStyles[heroConfig.background] || backgroundStyles.midnight}`}>
         <Hero3D />
         <div className="absolute inset-0 grid-pattern pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy-900/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-navy-900/50 pointer-events-none" />
 
-        <div className="container-page relative z-10 py-20 md:py-28 lg:py-32">
+        <div className="container-page relative z-10 py-12 md:py-24 lg:py-28">
           <div className="grid lg:grid-cols-[280px_1fr] gap-10 items-center">
             <div className="fade-up">
-              <div className="relative w-44 h-44 md:w-56 md:h-56 mx-auto lg:mx-0">
-                {/* <div className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-500 to-navy-400 blur-2xl opacity-40 animate-glow"></div> */}
+              <div className="relative w-36 h-36 md:w-56 md:h-56 mx-auto lg:mx-0">
                 <div className="relative w-full h-full rounded-full bg-navy-700 overflow-hidden border-4 border-white/20 shadow-2xl">
                   <img
                     src={profile.photo}
@@ -167,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* FOCUS AREAS ===================================================== */}
-      <section className="container-page py-20">
+      <section className="container-page py-16">
         <div className="text-center mb-12">
           <p className="section-label justify-center">What I work on</p>
           <h2 className="mb-3">Research & teaching focus</h2>
@@ -260,7 +259,7 @@ export default function Home() {
       </section>
 
       {/* FEATURED PUBLICATION ============================================ */}
-      <section className="container-page py-20">
+      <section className="container-page py-16">
         <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
           <div>
             <p className="section-label">Latest research</p>
@@ -321,7 +320,7 @@ export default function Home() {
       )}
 
       {/* RESOURCES PREVIEW =============================================== */}
-      <section className="container-page py-20">
+      <section className="container-page py-16">
         <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
           <div>
             <p className="section-label">Opportunities & links</p>
@@ -378,7 +377,7 @@ export default function Home() {
         <div className="container-page">
           <div className="flex items-end justify-between mb-10 flex-wrap gap-4">
             <div>
-              <p className="section-label">Latest from Dataverse</p>
+              <p className="section-label">Latest from DataverseAI</p>
               <h2>YouTube tutorials & explainers</h2>
               <p className="text-body mt-2 max-w-2xl">
                 Step-by-step ML and Deep Learning walkthroughs with real numerical examples.
@@ -400,9 +399,11 @@ export default function Home() {
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/30">
                     <PlayCircle size={56} className="text-white drop-shadow-lg" />
                   </div>
-                  <span className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-0.5 rounded font-mono">
-                    {v.duration}
-                  </span>
+                  {v.duration && (
+                    <span className="absolute bottom-2 right-2 bg-black/80 text-white text-xs px-2 py-0.5 rounded font-mono">
+                      {v.duration}
+                    </span>
+                  )}
                 </div>
                 <h3 className="font-serif text-base text-ink leading-snug group-hover:text-navy-600 transition-colors">
                   {v.title}
@@ -445,7 +446,7 @@ export default function Home() {
 
       {/* NEWSLETTER ====================================================== */}
       <section className="bg-gradient-to-br from-amber-500/5 via-white to-navy-50">
-        <div className="container-page py-20 text-center">
+        <div className="container-page py-16 text-center">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-amber-500/10 mb-4">
             <Mail className="w-6 h-6 text-amber-600" />
           </div>
