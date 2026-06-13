@@ -1,6 +1,16 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { Calendar, Clock, ArrowLeft } from 'lucide-react'
 import { getPostBySlug, getCategory, posts } from '../lib/blogLoader'
+import AiToolsGuide from '../components/blog/AiToolsGuide'
+
+/**
+ * Posts with a premium hand-built React layout. The slug maps to a component that
+ * renders rich infographic sections instead of the Markdown body. Any post NOT
+ * listed here renders its Markdown (blog-prose) as usual. Add flagship posts here.
+ */
+const CUSTOM_POSTS = {
+  'ai-tools-for-scientific-research-2026': AiToolsGuide,
+}
 
 export default function BlogPost() {
   const { slug } = useParams()
@@ -8,6 +18,7 @@ export default function BlogPost() {
 
   if (!post) return <Navigate to="/blog" replace />
 
+  const Custom = CUSTOM_POSTS[slug]
   const otherPosts = posts.filter(p => p.slug !== slug).slice(0, 3)
   const category = getCategory(post.type)
 
@@ -55,39 +66,46 @@ export default function BlogPost() {
         </div>
       </section>
 
-      {/* YouTube embed (optional) */}
-      {post.youtubeId && (
-        <section className="bg-white">
-          <div className="max-w-3xl mx-auto px-6 md:px-10 py-6">
-            <div className="relative w-full overflow-hidden rounded-xl shadow-md" style={{ aspectRatio: '16 / 9' }}>
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src={`https://www.youtube.com/embed/${post.youtubeId}`}
-                title={post.title}
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </section>
-      )}
+      {Custom ? (
+        /* Premium hand-built React layout */
+        <Custom />
+      ) : (
+        <>
+          {/* YouTube embed (optional) */}
+          {post.youtubeId && (
+            <section className="bg-white">
+              <div className="max-w-3xl mx-auto px-6 md:px-10 py-6">
+                <div className="relative w-full overflow-hidden rounded-xl shadow-md" style={{ aspectRatio: '16 / 9' }}>
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${post.youtubeId}`}
+                    title={post.title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            </section>
+          )}
 
-      {/* Cover image (optional) */}
-      {post.cover && (
-        <section className="bg-white">
-          <div className="max-w-3xl mx-auto px-6 md:px-10 py-6">
-            <img src={post.cover} alt={post.title} className="w-full rounded-xl shadow-md" />
-          </div>
-        </section>
-      )}
+          {/* Cover image (optional) */}
+          {post.cover && (
+            <section className="bg-white">
+              <div className="max-w-3xl mx-auto px-6 md:px-10 py-6">
+                <img src={post.cover} alt={post.title} className="w-full rounded-xl shadow-md" />
+              </div>
+            </section>
+          )}
 
-        <article className="blog-post-page">
-          <div
-            className={`max-w-3xl mx-auto px-6 md:px-10 py-10 blog-prose blog-prose--${post.type || 'essay'}`}
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
-        </article>
+          <article className="blog-post-page">
+            <div
+              className={`max-w-3xl mx-auto px-6 md:px-10 py-10 blog-prose blog-prose--${post.type || 'essay'}`}
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+          </article>
+        </>
+      )}
 
       {/* Footer / next reads */}
       {otherPosts.length > 0 && (

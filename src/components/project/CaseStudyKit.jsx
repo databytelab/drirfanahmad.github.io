@@ -8,13 +8,13 @@ import { ChevronRight, ChevronDown, Copy, Check, ImageOff } from 'lucide-react'
  * ──────────────────────────────────────────────────────────────────────── */
 
 /** Section shell: eyebrow label + heading + optional intro, on a chosen background. */
-export function CaseSection({ eyebrow, title, intro, children, bg = 'white', className = '' }) {
+export function CaseSection({ id, eyebrow, title, intro, children, bg = 'white', className = '' }) {
   const bgClass = bg === 'cream' ? 'bg-cream border-y border-gray-200'
     : bg === 'navy' ? 'bg-navy-900 text-white'
     : bg === 'soft' ? 'bg-navy-50 border-y border-gray-200'
     : 'bg-white'
   return (
-    <section className={`${bgClass} ${className}`}>
+    <section id={id} className={`${bgClass} ${id ? 'scroll-mt-28' : ''} ${className}`}>
       <div className="container-page py-12 md:py-16">
         {eyebrow && <p className={`section-label ${bg === 'navy' ? '!text-amber-400' : ''}`}>{eyebrow}</p>}
         {title && <h2 className={bg === 'navy' ? 'text-white mb-3' : 'mb-3'}>{title}</h2>}
@@ -173,13 +173,13 @@ export function CodeCard({ filename = 'model.py', code, language = 'python' }) {
 }
 
 /** Figure that degrades to a clean dashed placeholder until the image is added. */
-export function Figure({ src, alt, caption }) {
+export function Figure({ src, alt, caption, aspect = '4 / 3' }) {
   const [errored, setErrored] = useState(false)
   return (
     <figure className="card-gradient">
       {errored ? (
         <div className="w-full rounded-lg border border-dashed flex flex-col items-center justify-center text-center px-4"
-             style={{ borderColor: '#C8D9EC', background: '#F4F7FA', aspectRatio: '4 / 3' }}>
+             style={{ borderColor: '#C8D9EC', background: '#F4F7FA', aspectRatio: aspect }}>
           <ImageOff size={22} style={{ color: '#C8D9EC' }} className="mb-2" />
           <p className="text-xs text-muted">Add <code className="font-mono text-navy-600">{src.split('/').pop()}</code></p>
         </div>
