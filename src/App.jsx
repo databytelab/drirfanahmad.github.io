@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Research from './pages/Research'
 import Teaching from './pages/Teaching'
 import Projects from './pages/Projects'
+import ProjectDetail from './pages/ProjectDetail'
 import Resources from './pages/Resources'
 import Blog from './pages/Blog'
 import BlogPost from './pages/BlogPost'
@@ -34,6 +35,7 @@ export default function App() {
           <Route path="/research" element={<Research />} />
           <Route path="/teaching" element={<Teaching />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

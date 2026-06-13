@@ -11,11 +11,12 @@ export const projects = [
   {
     year: 2024,
     title: 'Thai Currency Recognition for Visually Impaired',
-    description: 'Deep learning system using transfer learning (Xception, MobileNet) to detect Thai banknote denominations. Deployed as an Android app to assist visually impaired users.',
+    description: 'Deep learning system using transfer learning (Xception) to recognise new Thai banknote denominations — even folded, dimly lit, or on cluttered backgrounds — at 99.8% validation accuracy.',
     type: 'supervised',
-    stack: ['TensorFlow', 'Keras', 'Transfer Learning', 'Android', 'OpenCV'],
+    stack: ['TensorFlow', 'Keras', 'Xception', 'Transfer Learning', 'OpenCV'],
+    slug: 'thai-currency-recognition',
     github: '',
-    paper: '',
+    paper: 'https://doi.org/10.1109/ICSPCS63175.2024.10815772',
   },
   {
     year: 2023,

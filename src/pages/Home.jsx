@@ -171,7 +171,7 @@ export default function Home() {
           <p className="section-label justify-center">What I work on</p>
           <h2 className="mb-3">Research & teaching focus</h2>
           <p className="text-body max-w-2xl mx-auto">
-            Bridging classical nonlinear dynamics with modern machine learning — and teaching the next generation how to think about both.
+            Building practical machine learning and computer vision systems — and rethinking how computer science is taught in the age of AI.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -274,6 +274,9 @@ export default function Home() {
           <div className="flex items-center gap-3 mb-4 flex-wrap">
             <span className="font-mono text-sm text-amber-600 font-semibold">{featured.year}</span>
             {featured.rank && <span className={featured.rank === 'Q1' ? 'badge-q1' : 'badge-q2'}>{featured.rank}</span>}
+            {featured.impact && (
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-navy-50 text-navy-500 border border-navy-100">IF {featured.impact}</span>
+            )}
             <span className="badge-new">New</span>
           </div>
           <h3 className="font-serif text-xl md:text-2xl text-ink mb-3 leading-tight">{featured.title}</h3>
@@ -283,6 +286,11 @@ export default function Home() {
             <div className="flex flex-wrap gap-2 mt-5">
               {featured.tags.map(t => <span key={t} className="badge-tag">{t}</span>)}
             </div>
+          )}
+          {featured.doi && (
+            <a href={featured.doi} target="_blank" rel="noreferrer" className="btn-secondary !py-1.5 !px-3 !text-xs mt-5">
+              DOI / Journal <ExternalLink size={12} />
+            </a>
           )}
         </div>
       </section>

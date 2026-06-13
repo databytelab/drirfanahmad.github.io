@@ -72,7 +72,7 @@
   }
 
   .section-label {
-    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-navy-400 font-semibold mb-3;
+    @apply inline-flex items-center gap-2 text-[0.8125rem] uppercase tracking-[0.18em] text-navy-400 font-semibold mb-3;
   }
   .section-label::before {
     content: '';

@@ -1,6 +1,8 @@
-import { Github, FileText } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Github, FileText, ArrowRight } from 'lucide-react'
 import PageHero from '../components/PageHero'
 import { projects } from '../data/projects'
+import { hasProjectStudy } from '../lib/projectLoader'
 import { useReveal } from '../hooks/useReveal'
 
 export default function Projects() {
@@ -15,7 +17,9 @@ export default function Projects() {
 
       <section className="container-page py-12">
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((p, i) => (
+          {projects.map((p, i) => {
+            const caseStudy = hasProjectStudy(p.slug)
+            return (
             <article key={i} className={`card-gradient reveal reveal-${(i % 4) + 1} flex flex-col`}>
               <div className="flex items-center justify-between mb-3">
                 <span className="font-mono text-sm text-amber-600 font-semibold">{p.year}</span>
@@ -23,12 +27,21 @@ export default function Projects() {
                   {p.type}
                 </span>
               </div>
-              <h3 className="font-serif text-lg text-ink mb-3 leading-snug">{p.title}</h3>
+              <h3 className="font-serif text-lg text-ink mb-3 leading-snug">
+                {caseStudy
+                  ? <Link to={`/projects/${p.slug}`} className="hover:text-navy-600 transition-colors">{p.title}</Link>
+                  : p.title}
+              </h3>
               <p className="text-sm text-body mb-4 flex-1">{p.description}</p>
               <div className="flex flex-wrap gap-1.5 mb-4">
                 {p.stack.map(t => <span key={t} className="badge-tag !text-[11px]">{t}</span>)}
               </div>
-              <div className="flex gap-4 text-sm pt-4 border-t border-gray-100">
+              <div className="flex flex-wrap items-center gap-4 text-sm pt-4 border-t border-gray-100">
+                {caseStudy && (
+                  <Link to={`/projects/${p.slug}`} className="text-navy-600 hover:text-navy-400 inline-flex items-center gap-1 font-semibold group">
+                    View case study <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                )}
                 {p.github && (
                   <a href={p.github} target="_blank" rel="noreferrer" className="text-navy-600 hover:text-navy-400 inline-flex items-center gap-1 font-medium">
                     <Github size={14} /> Code
@@ -39,12 +52,13 @@ export default function Projects() {
                     <FileText size={14} /> Paper
                   </a>
                 )}
-                {!p.github && !p.paper && (
+                {!caseStudy && !p.github && !p.paper && (
                   <span className="text-xs text-muted italic">Contact for details</span>
                 )}
               </div>
             </article>
-          ))}
+            )
+          })}
         </div>
       </section>
     </>
