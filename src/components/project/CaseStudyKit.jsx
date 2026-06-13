@@ -35,25 +35,45 @@ export function StatTile({ value, label }) {
   )
 }
 
-/** Horizontal flow of steps with connectors; stacks vertically on mobile. */
-export function FlowSteps({ steps, accent = '#1A3A5C' }) {
+/** Theme-consistent accent cycle: navy → teal → amber → steel-blue. */
+export const FLOW_ACCENTS = ['#1A3A5C', '#0694A2', '#E8A020', '#2D6A9F']
+
+/**
+ * Horizontal flow of steps with connectors; stacks vertically on mobile.
+ * Colours cycle through the palette; the last node is rendered solid as the
+ * "outcome". Pass `accent` on a step to override, or `emphasizeLast={false}`.
+ */
+export function FlowSteps({ steps, emphasizeLast = true }) {
   return (
     <div className="flex flex-col md:flex-row md:items-stretch gap-2">
       {steps.map((s, i) => {
         const Icon = s.icon
+        const accent = s.accent || FLOW_ACCENTS[i % FLOW_ACCENTS.length]
+        const solid = emphasizeLast && i === steps.length - 1
         return (
           <Fragment key={i}>
-            <div className="flex-1 rounded-xl border bg-white p-5 text-center flex flex-col items-center shadow-sm"
-                 style={{ borderColor: '#C8D9EC' }}>
+            <div className="flex-1 rounded-xl p-5 text-center flex flex-col items-center shadow-sm relative overflow-hidden"
+                 style={solid
+                   ? { background: accent, border: `1px solid ${accent}` }
+                   : { background: `${accent}0D`, border: `1px solid ${accent}33` }}>
+              {!solid && <span className="absolute top-0 left-0 right-0 h-1" style={{ background: accent }} />}
               <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-3"
-                   style={{ background: `${accent}14`, color: accent }}>
+                   style={solid
+                     ? { background: 'rgba(255,255,255,0.18)', color: '#ffffff' }
+                     : { background: `${accent}1F`, color: accent }}>
                 {Icon && <Icon size={22} />}
               </div>
-              <div className="font-semibold text-sm text-ink leading-snug">{s.title}</div>
-              {s.caption && <div className="text-xs text-muted mt-1 leading-snug">{s.caption}</div>}
+              <div className="font-semibold text-sm leading-snug" style={{ color: solid ? '#ffffff' : '#1A1A1A' }}>
+                {s.title}
+              </div>
+              {s.caption && (
+                <div className="text-xs mt-1 leading-snug" style={{ color: solid ? 'rgba(255,255,255,0.82)' : '#5A6678' }}>
+                  {s.caption}
+                </div>
+              )}
             </div>
             {i < steps.length - 1 && (
-              <div className="flex items-center justify-center text-navy-400 shrink-0">
+              <div className="flex items-center justify-center shrink-0" style={{ color: '#E8A020' }}>
                 <ChevronRight size={22} className="hidden md:block" />
                 <ChevronDown size={22} className="md:hidden" />
               </div>
@@ -65,13 +85,18 @@ export function FlowSteps({ steps, accent = '#1A3A5C' }) {
   )
 }
 
-/** Numbered stage card (for the fine-tuning explanation). */
-export function StageCard({ number, title, children }) {
+/** Numbered stage card with a colored accent bar + filled number badge. */
+export function StageCard({ number, title, accent = '#1A3A5C', children }) {
   return (
-    <div className="card-gradient h-full">
-      <div className="flex items-center gap-3 mb-2">
-        <span className="font-mono text-sm font-bold text-amber-600">{number}</span>
-        <span className="h-px flex-1 bg-navy-100" />
+    <div className="rounded-xl p-5 h-full bg-white shadow-sm relative overflow-hidden"
+         style={{ border: `1px solid ${accent}33` }}>
+      <span className="absolute top-0 left-0 right-0 h-1" style={{ background: accent }} />
+      <div className="flex items-center gap-3 mb-2.5">
+        <span className="w-8 h-8 rounded-full flex items-center justify-center font-mono text-xs font-bold"
+              style={{ background: `${accent}1F`, color: accent }}>
+          {number}
+        </span>
+        <span className="h-px flex-1" style={{ background: `${accent}26` }} />
       </div>
       <h4 className="font-serif text-base text-ink mb-1.5">{title}</h4>
       <p className="text-sm text-body leading-relaxed">{children}</p>

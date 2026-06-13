@@ -49,18 +49,23 @@ export default function ThaiCurrencyStudy() {
       {/* 3 — PROBLEM VISUALIZATION */}
       <CaseSection bg="soft" eyebrow="The problem" title="From a banknote to a spoken answer"
         intro="The new Thai notes' tactile relief dots fade with wear, leaving visually impaired users unable to tell denominations apart. The goal: point a phone, hear the answer.">
-        <FlowSteps accent="#1A3A5C" steps={[
+        <FlowSteps steps={[
           { icon: User, title: 'Visually impaired user', caption: "Can't distinguish notes" },
           { icon: Camera, title: 'Phone camera', caption: 'Points & captures' },
           { icon: Cpu, title: 'Xception model', caption: 'Recognises the note' },
           { icon: Volume2, title: 'Spoken denomination', caption: '“One hundred baht”' },
         ]} />
+        <div className="max-w-sm mx-auto mt-8">
+          <Figure src="/projects/thai-currency-recognition/app-demo.jpg"
+                  alt="Prototype app identifying a Thai banknote"
+                  caption="Prototype: point, capture, and hear the denomination" />
+        </div>
       </CaseSection>
 
       {/* 4 — DATASET COLLECTION PIPELINE */}
       <CaseSection eyebrow="The dataset" title="The hard part wasn't the model — it was the data"
         intro="No public dataset existed for the new Thai notes, so we built one for the conditions a blind user actually faces.">
-        <FlowSteps accent="#E8A020" steps={[
+        <FlowSteps emphasizeLast={false} steps={[
           { icon: Banknote, title: 'Capture notes', caption: '5 denominations · 720 each' },
           { icon: RotateCw, title: 'Orientations', caption: 'Front, back, rotated 180°' },
           { icon: Layers, title: 'Folds', caption: 'Half-folded top & bottom' },
@@ -68,6 +73,14 @@ export default function ThaiCurrencyStudy() {
           { icon: Scaling, title: 'Resize', caption: '250 × 250 px' },
           { icon: Split, title: 'Split', caption: '70 / 30 train–val' },
         ]} />
+        <div className="grid md:grid-cols-2 gap-6 mt-8">
+          <Figure src="/projects/thai-currency-recognition/dataset-samples.jpg"
+                  alt="Sample new Thai notes across orientations, folds, and backgrounds"
+                  caption="Real captures — folded, dark, and cluttered conditions" />
+          <Figure src="/projects/thai-currency-recognition/data-split.jpg"
+                  alt="Balanced train and validation split across the five denominations"
+                  caption="Balanced 70 / 30 split across all five denominations" />
+        </div>
         <div className="blog-callout mt-8 max-w-3xl">
           <div className="blog-callout-label">💡 The lesson</div>
           <p>A model is only as honest as its data. By photographing notes folded, dimly lit, and on messy
@@ -78,29 +91,34 @@ export default function ThaiCurrencyStudy() {
       {/* 5 — MODEL ARCHITECTURE */}
       <CaseSection bg="cream" eyebrow="The model" title="Transfer learning on Xception"
         intro="Rather than train from scratch on 3,600 images, we re-used a network that already knows how to see, and re-taught only the parts that need to know about banknotes.">
-        <FlowSteps accent="#1A3A5C" steps={[
+        <FlowSteps steps={[
           { icon: ImageIcon, title: 'Input image', caption: '250 × 250 × 3' },
           { icon: Cpu, title: 'Xception backbone', caption: 'Depthwise separable conv' },
           { icon: Layers, title: 'Global Avg Pooling', caption: 'Feature vector' },
           { icon: Percent, title: 'Softmax', caption: '5 probabilities' },
           { icon: Banknote, title: 'Predicted note', caption: 'e.g. “100 ฿”' },
         ]} />
+        <div className="max-w-2xl mx-auto mt-8">
+          <Figure src="/projects/thai-currency-recognition/architecture.jpg"
+                  alt="The formal fine-tuned Xception architecture"
+                  caption="The formal Xception fine-tuning architecture from the paper" />
+        </div>
       </CaseSection>
 
       {/* 6 — CODE EXPLANATION */}
       <CaseSection eyebrow="How it works" title="Four stages of fine-tuning"
         intro="The adaptation was small and surgical — four steps turn a general image network into a banknote specialist.">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <StageCard number="01" title="Use pre-trained Xception">
+          <StageCard number="01" accent="#1A3A5C" title="Use pre-trained Xception">
             Load the ImageNet-trained backbone — it already understands edges, textures, and shapes.
           </StageCard>
-          <StageCard number="02" title="Freeze early layers">
+          <StageCard number="02" accent="#0694A2" title="Freeze early layers">
             The first layers detect universal features. Keep them frozen — nothing currency-specific to relearn.
           </StageCard>
-          <StageCard number="03" title="Add pooling + softmax">
+          <StageCard number="03" accent="#E8A020" title="Add pooling + softmax">
             Replace the classifier with Global Average Pooling and a 5-way softmax head.
           </StageCard>
-          <StageCard number="04" title="Fine-tune gently">
+          <StageCard number="04" accent="#2D6A9F" title="Fine-tune gently">
             Train the deeper layers with a small learning rate so currency features emerge without forgetting.
           </StageCard>
         </div>
@@ -162,6 +180,12 @@ export default function ThaiCurrencyStudy() {
                   caption="Training vs. validation loss across epochs" />
         </div>
 
+        <div className="max-w-3xl mx-auto mt-6">
+          <Figure src="/projects/thai-currency-recognition/predictions.jpg"
+                  alt="Model predictions on unseen notes against cluttered backgrounds"
+                  caption="Predictions on unseen, cluttered notes — with per-note confidence" />
+        </div>
+
         <div className="blog-callout mt-8 max-w-3xl">
           <div className="blog-callout-label">🔬 Staying honest about “perfect” scores</div>
           <p>Near-perfect accuracy should always raise an eyebrow. Two things give us confidence: the validation
@@ -203,9 +227,12 @@ export default function ThaiCurrencyStudy() {
             { icon: Feather, title: 'Lightweight models', body: 'MobileNet-class backbones for budget phones.' },
             { icon: Check, title: 'Field validation', body: 'Trials with visually impaired users in real settings.' },
           ].map(({ icon: Icon, title, body }) => (
-            <div key={title} className="card-glass">
-              <div className="w-10 h-10 rounded-lg bg-amber-400/15 text-amber-400 flex items-center justify-center mb-3">
-                <Icon size={18} />
+            <div key={title}
+                 className="relative rounded-xl p-5 pl-6 overflow-hidden bg-white/[0.06] border border-white/10 hover:bg-white/[0.1] hover:-translate-y-0.5 transition-all">
+              <span className="absolute top-0 left-0 bottom-0 w-1" style={{ background: '#E8A020' }} />
+              <div className="w-11 h-11 rounded-lg flex items-center justify-center mb-3"
+                   style={{ background: 'rgba(232,160,32,0.18)', color: '#F2B843' }}>
+                <Icon size={20} />
               </div>
               <h4 className="font-serif text-base text-white mb-1.5">{title}</h4>
               <p className="text-sm text-white/70 leading-relaxed">{body}</p>
