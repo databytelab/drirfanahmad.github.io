@@ -20,8 +20,18 @@ function ResourceCard({ resource, index }) {
   const statusStyle = {
     open: 'bg-emerald-50 text-emerald-700 border-emerald-200',
     'closing-soon': 'bg-amber-50 text-amber-700 border-amber-200',
+    // Annual programmes sitting between rounds: the call is closed right now,
+    // but it runs again — worth showing rather than hiding.
+    upcoming: 'bg-navy-50 text-navy-600 border-navy-200',
     closed: 'bg-gray-100 text-gray-500 border-gray-200',
   }[resource.status] || 'bg-emerald-50 text-emerald-700 border-emerald-200'
+
+  const statusLabel = {
+    open: 'Open',
+    'closing-soon': 'Closing soon',
+    upcoming: 'Upcoming',
+    closed: 'Closed',
+  }[resource.status] || 'Open'
 
   const categoryStyle = {
     scholarship: 'bg-amber-500/10 text-amber-600',
@@ -41,7 +51,7 @@ function ResourceCard({ resource, index }) {
           {cat.label}
         </span>
         <span className={`text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded border ${statusStyle}`}>
-          {resource.status === 'open' ? 'Open' : resource.status === 'closing-soon' ? 'Closing soon' : 'Closed'}
+          {statusLabel}
         </span>
       </div>
 
