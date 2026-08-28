@@ -37,6 +37,25 @@ export function parseFrontmatter(raw) {
 }
 
 /**
+ * One figure. The <img> is rendered normally, with a dashed placeholder sitting
+ * alongside it that stays hidden until the image fails to load — at which point
+ * `useFigureFallback` adds `.is-missing` to the figure and the placeholder takes
+ * over, naming the file that needs to be dropped into public/. This lets a post
+ * declare its images up front without ever showing a broken-image icon.
+ */
+function figureHtml(src, caption, extraClass = '') {
+  const filename = src.split('/').pop()
+  return `<figure class="blog-figure${extraClass}">`
+    + `<img src="${src}" alt="${caption}" loading="lazy" />`
+    + `<div class="blog-figure-placeholder">`
+    +   `<span class="blog-figure-placeholder-file">${filename}</span>`
+    +   `<span class="blog-figure-placeholder-hint">image placeholder</span>`
+    + `</div>`
+    + (caption ? `<figcaption>${caption}</figcaption>` : '')
+    + `</figure>`
+}
+
+/**
  * Converts the custom ::block syntax into styled HTML before markdown-it runs.
  * Shared by blog posts and project case studies.
  */
@@ -60,7 +79,7 @@ export function preprocessCustomBlocks(raw) {
       const captionMatch = attrs.match(/caption="([^"]+)"/)
       const src = srcMatch ? srcMatch[1] : ''
       const caption = captionMatch ? captionMatch[1] : ''
-      return `<figure class="blog-figure"><img src="${src}" alt="${caption}" loading="lazy" />${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`
+      return figureHtml(src, caption)
     }).join('\n')
 
     const gridClass = count === 4 ? 'blog-figure-grid-4'
@@ -78,7 +97,7 @@ export function preprocessCustomBlocks(raw) {
     const src = srcMatch ? srcMatch[1] : ''
     const caption = captionMatch ? captionMatch[1] : ''
     const extraClass = classMatch ? ` ${classMatch[1]}` : ''
-    return `<figure class="blog-figure${extraClass}"><img src="${src}" alt="${caption}" loading="lazy" />${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`
+    return figureHtml(src, caption, extraClass)
   })
 
   // Pull quote: :::pullquote -- Citation\n...\n:::
@@ -130,7 +149,9 @@ export function buildEntries(modules) {
       slug,
       ...data,
       html,
-      readTime: Math.ceil(content.split(/\s+/).length / 200),
+      // Honor a frontmatter `readTime` (useful when the body is rendered by a
+      // custom React component); otherwise estimate from the Markdown word count.
+      readTime: data.readTime ? Number(data.readTime) : Math.ceil(content.split(/\s+/).length / 200),
     }
   })
 }

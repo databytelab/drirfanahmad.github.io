@@ -46,9 +46,7 @@ Real classroom experience is the credential that no generative AI can replicate.
 
 ## One Lecture. Five Pieces of Content. Zero Extra Hours.
 
-
 ::image{src=/blog/invisible-in-5-years/02.jpg caption="The content repurposing system: one lecture becomes a YouTube video, a LinkedIn post, a blog article, a Short, and a newsletter — all from the same 90 minutes of preparation already done for class."}
-
 
 The biggest mistake academics make is treating each platform as a separate creative effort requiring separate preparation. The correct model is a **content repurposing system**: one core asset at the top, distributed downward with AI assistance. Here is the exact workflow:
 
@@ -82,7 +80,6 @@ The ML research community on X is still active and influential. A 6-tweet thread
 ::section 04 — The Platform
 
 ## Own Your Address on the Internet
-
 
 A personal academic website is not vanity. It is <mark>an algorithm-independent, permanent address on the internet that you control</mark>. Social media accounts can be deactivated, university profile pages can be restructured, and email addresses change with every new appointment. A personal domain does not.
 

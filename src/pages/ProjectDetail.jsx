@@ -1,6 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { ArrowLeft, Calendar, Github, FileText } from 'lucide-react'
 import { getProjectStudy, projectStudies } from '../lib/projectLoader'
+import { useFigureFallback } from '../hooks/useFigureFallback'
 import ThaiCurrencyStudy from '../components/project/ThaiCurrencyStudy'
 
 /**
@@ -15,6 +16,7 @@ const CUSTOM_STUDIES = {
 export default function ProjectDetail() {
   const { slug } = useParams()
   const project = getProjectStudy(slug)
+  useFigureFallback(slug)
 
   if (!project) return <Navigate to="/projects" replace />
 

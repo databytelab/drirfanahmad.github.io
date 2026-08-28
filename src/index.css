@@ -520,6 +520,48 @@
   letter-spacing: 0.05em;
 }
 
+/* Image placeholder — shown by useFigureFallback when the file isn't there yet.
+   Lets a post declare its figures before the images exist, without ever
+   rendering a broken-image icon. */
+.blog-figure-placeholder { display: none; }
+
+.blog-figure.is-missing img { display: none; }
+
+.blog-figure.is-missing .blog-figure-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  background: #F4F7FA;
+  border: 1px dashed #C8D9EC;
+  border-radius: 6px;
+}
+.blog-figure-placeholder-file {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: #1A3A5C;
+  font-weight: 600;
+  word-break: break-all;
+}
+.blog-figure-placeholder-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #718096;
+}
+/* Portrait figures get a taller placeholder box. */
+.blog-figure.portrait.is-missing .blog-figure-placeholder {
+  aspect-ratio: 3 / 4;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
 /* Facebook / portrait images — cap width so they don't stretch */
 .blog-figure.portrait img {
   max-width: 480px;

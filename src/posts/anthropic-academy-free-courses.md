@@ -5,14 +5,15 @@ excerpt: "13 free courses covering everything from AI basics to building product
 tags: ["AI Education", "Free Courses", "Claude", "Machine Learning", "Career"]
 cover: ""
 type: "resource"
+youtubeId: ""
 ---
-::image{src=/blog/anthropic-academy-free-courses/01.jpg caption="The Anthropic Academy course catalogue at anthropic.skilljar.com"}
-
 Most students think learning AI requires expensive courses, subscriptions, or bootcamps. Yet one of the most comprehensive AI curricula available today is completely free, officially developed by Anthropic, and still largely unknown outside a relatively small circle of developers and educators.
 
 I see the same pattern repeatedly in my students. They want to become AI engineers. They search online, find a $200 course, hesitate, and end up doing nothing. Meanwhile, one of the most structured free AI curricula available anywhere on the internet has been sitting at a single URL since March 2026 — and most people in my classes have never heard of it.
 
 That URL is anthropic.skilljar.com. And what Anthropic has built there is worth your full attention.
+
+::image{src=/blog/anthropic-academy-free-courses/01.jpg caption="The Anthropic Academy course catalogue at anthropic.skilljar.com"}
 
 ::section 01 — What It Is
 
@@ -24,8 +25,7 @@ The short version: 13 free courses, real certificates, no credit card, no paywal
 
 I want to be specific about what "free" means here because I have seen too many "free" platforms that gate the useful parts behind a subscription. Every one of the 13+ self-paced courses requires only an email to enroll, with no Claude subscription, credit card, or hidden upsells, and each course awards an official Anthropic certificate on completion.
 
-
-That last part matters. These are not participation badges. Anthropic issues an official LinkedIn-ready certificate on completion. While certificates alone do not secure jobs, they provide verifiable evidence of structured learning and can strengthen a portfolio when paired with practical projects and real-world experience..
+That last part matters. These are not participation badges. Anthropic issues an official LinkedIn-ready certificate on completion. While certificates alone do not secure jobs, they provide verifiable evidence of structured learning and can strengthen a portfolio when paired with practical projects and real-world experience.
 
 ::image{src=/blog/anthropic-academy-free-courses/04.jpg caption="Course completion certificates are official and LinkedIn-ready"}
 
@@ -51,15 +51,15 @@ This covers MCP intro, MCP advanced topics, and connects AI to tools, documents,
 This covers deploying Claude on AWS Bedrock and Google Vertex AI at production scale. Aimed at developers and ML engineers who need to deploy systems for real organizations, not just run notebooks locally.
 
 :::imagegrid
-::image{src=/blog/anthropic-academy-free-courses/02.jpg caption=" AI Fluency Track"}
+::image{src=/blog/anthropic-academy-free-courses/02.jpg caption="AI Fluency Track"}
 ::image{src=/blog/anthropic-academy-free-courses/06.jpg caption="MCP (Model Context Protocol)"}
-::image{src=/blog/anthropic-academy-free-courses/03.jpg caption=" Developer Deep-Dives"}
+::image{src=/blog/anthropic-academy-free-courses/03.jpg caption="Developer Deep-Dives"}
 ::image{src=/blog/anthropic-academy-free-courses/07.jpg caption="Cloud and Enterprise Deployment"}
 :::
 
-::image{src=/blog/anthropic-academy-free-courses/05.jpg caption=" The complete Anthropic Academy roadmap" class="portrait"}
+::image{src=/blog/anthropic-academy-free-courses/05.jpg caption="The complete Anthropic Academy roadmap" class="portrait"}
 
-::section 02.5 — Why This Matters
+::section 03 — Why This Matters
 
 ## Why Anthropic Academy Matters in 2026
 
@@ -71,8 +71,7 @@ Second, it includes structured training on Model Context Protocol (MCP), one of 
 
 Third, it provides a coherent pathway from AI literacy to production deployment. Many AI courses teach isolated tools. Anthropic Academy teaches an ecosystem.
 
-
-::section 03 — Total Time Investment
+::section 04 — Total Time Investment
 
 ## How Long Will This Actually Take?
 
@@ -90,7 +89,7 @@ Roughly 18 to 22 hours for the entire updated catalogue, factoring in the 4 new 
 One course per week at an hour per day. That is the entire catalogue done in a month without disrupting anything else you are doing.
 :::
 
-::section 04 — The Recommended Path By Background
+::section 05 — The Recommended Path By Background
 
 ## Where To Start Based On Who You Are
 
@@ -113,7 +112,7 @@ Claude Code in Action → Building with the Claude API → MCP Advanced Topics �
 Just do AI Fluency: Framework and Foundations. It is free, takes under an hour, and gives you enough to make an informed decision about whether to go deeper.
 :::
 
-::section 05 — Why I Recommend This Specifically
+::section 06 — Why I Recommend This Specifically
 
 ## My Honest Assessment as an Educator
 
@@ -136,7 +135,5 @@ All you need is an email address and the decision to begin.
 
 Enroll at **anthropic.skilljar.com**
 :::
-
-
 
 **Have you taken any of the Anthropic Academy courses?** I would like to hear which track you found most useful and whether you recommend it to others. Leave your thoughts in the contact form below or reach out directly.

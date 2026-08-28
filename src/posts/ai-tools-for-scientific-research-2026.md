@@ -5,6 +5,7 @@ excerpt: "A critical, evidence-based review of six AI research tools — Scite, 
 tags: ["AI Tools", "Research Methods", "Literature Review", "Academic Writing", "PhD", "Productivity"]
 cover: ""
 type: "resource"
+youtubeId: ""
 ---
 Every researcher I meet is quietly drowning in the same flood: too many papers, too little time, and a nagging sense that the one study that would change their argument is sitting unread in a database they never searched. In 2026, a wave of AI tools promises to fix this. Some genuinely help. Others quietly introduce new risks — fabricated citations, shallow synthesis, and an over-trust in software that does not actually understand your field.
 
@@ -89,13 +90,9 @@ Save citation reports and integrate with your reference manager.
 - **Systematic reviewers:** assess how consistently an effect has been replicated.
 - **Interdisciplinary researchers:** gauge the reception of a claim in a field they don't know well.
 
-:::callout ✅ Strengths
-The supporting/contrasting lens is genuinely novel and hard to get elsewhere — it surfaces controversy that citation counts hide. Reference checking against retractions is a real integrity safeguard. Deep integrations fit existing workflows.
-:::
+**Strengths.** The supporting/contrasting lens is genuinely novel and hard to get elsewhere — it surfaces controversy that citation counts hide. Reference checking against retractions is a real integrity safeguard. Deep integrations fit existing workflows.
 
-:::callout ⚠️ Limitations
-Smart Citation classification is automated and **can mislabel** stance, especially with hedged academic language — always read the snippet. Coverage depends on indexed full text, so **paywalled or non-indexed citations are missed**. It evaluates *reception*, not *correctness* — a contrasted paper isn't necessarily wrong. It does not read or synthesise papers for you.
-:::
+**Limitations.** Smart Citation classification is automated and **can mislabel** stance, especially with hedged academic language — always read the snippet. Coverage depends on indexed full text, so **paywalled or non-indexed citations are missed**. It evaluates *reception*, not *correctness* — a contrasted paper isn't necessarily wrong. It does not read or synthesise papers for you.
 
 | Plan | Price (verified mid-2026) | Includes |
 |---|---|---|
@@ -151,13 +148,9 @@ Send the formatted document and reference list to Word or LaTeX.
 - **Systematic reviewers:** assemble narrative sections once data is extracted elsewhere.
 - **Interdisciplinary / non-native English researchers:** produce fluent academic English to then verify for accuracy.
 
-:::callout ✅ Strengths
-Excellent at reducing drafting friction and improving flow for non-native writers. Grounding drafts in uploaded PDFs reduces (but does not eliminate) fabrication. Citations-as-you-write saves real time.
-:::
+**Strengths.** Excellent at reducing drafting friction and improving flow for non-native writers. Grounding drafts in uploaded PDFs reduces (but does not eliminate) fabrication. Citations-as-you-write saves real time.
 
-:::callout ⚠️ Limitations
-This is the highest-risk category for integrity. **AI-generated text can be generic, subtly wrong, or fabricate citations** — every claim and reference must be verified against the source. Many institutions and journals **require disclosure** of AI writing assistance, and some prohibit it. Over-reliance erodes the writing skill that doctoral training is meant to build. Use it to draft, never to think.
-:::
+**Limitations.** This is the highest-risk category for integrity. **AI-generated text can be generic, subtly wrong, or fabricate citations** — every claim and reference must be verified against the source. Many institutions and journals **require disclosure** of AI writing assistance, and some prohibit it. Over-reliance erodes the writing skill that doctoral training is meant to build. Use it to draft, never to think.
 
 | Plan | Price (verified mid-2026) | Includes |
 |---|---|---|
@@ -211,13 +204,9 @@ Download the table (CSV) or a report into your review.
 - **Systematic reviewers:** accelerate screening and extraction — *with* documented manual verification.
 - **Interdisciplinary researchers:** extract comparable metrics across unfamiliar subfields.
 
-:::callout ✅ Strengths
-The standout tool for *empirical synthesis*. Structured extraction into tables is exactly what a literature review needs, and the generous free tier makes it accessible. Auto-summaries speed triage dramatically.
-:::
+**Strengths.** The standout tool for *empirical synthesis*. Structured extraction into tables is exactly what a literature review needs, and the generous free tier makes it accessible. Auto-summaries speed triage dramatically.
 
-:::callout ⚠️ Limitations
-**Extraction is not infallible** — values can be pulled incorrectly, so every cell used in analysis must be verified. Coverage is a subset of the literature and **misses books, grey literature, and non-indexed work**, so it is *not* a complete systematic-review engine on its own. Works best on well-formed empirical questions; weaker on theoretical or qualitative ones.
-:::
+**Limitations.** **Extraction is not infallible** — values can be pulled incorrectly, so every cell used in analysis must be verified. Coverage is a subset of the literature and **misses books, grey literature, and non-indexed work**, so it is *not* a complete systematic-review engine on its own. Works best on well-formed empirical questions; weaker on theoretical or qualitative ones.
 
 | Plan | Price (verified mid-2026) | Includes |
 |---|---|---|
@@ -272,13 +261,9 @@ Save the papers that matter into your reference manager.
 - **Systematic reviewers:** scope the consensus before a formal protocol.
 - **Interdisciplinary researchers:** get a credible first answer outside their expertise.
 
-:::callout ✅ Strengths
-Outstanding for empirical yes/no questions — fast, citation-backed, and honest about disagreement via the meter. Strong triage tool that always links to sources.
-:::
+**Strengths.** Outstanding for empirical yes/no questions — fast, citation-backed, and honest about disagreement via the meter. Strong triage tool that always links to sources.
 
-:::callout ⚠️ Limitations
-The **Consensus Meter can oversimplify** — study quality and context matter more than a percentage. It is **not a writing or extraction tool**, and it struggles with theoretical, methodological, or open-ended questions. Coverage is limited to its index, so absence of evidence in Consensus is not evidence of absence.
-:::
+**Limitations.** The **Consensus Meter can oversimplify** — study quality and context matter more than a percentage. It is **not a writing or extraction tool**, and it struggles with theoretical, methodological, or open-ended questions. Coverage is limited to its index, so absence of evidence in Consensus is not evidence of absence.
 
 | Plan | Price (verified mid-2026) | Includes |
 |---|---|---|
@@ -334,13 +319,9 @@ Get notified when new connected work appears.
 - **Systematic reviewers:** snowball sampling to ensure key papers aren't missed.
 - **Interdisciplinary researchers:** see how two fields connect through shared citations.
 
-:::callout ✅ Strengths
-The best *free* discovery experience available, and the visual graph genuinely reveals structure that lists hide. Excellent for snowballing and for the "what am I missing?" anxiety. Zotero sync fits real workflows.
-:::
+**Strengths.** The best *free* discovery experience available, and the visual graph genuinely reveals structure that lists hide. Excellent for snowballing and for the "what am I missing?" anxiety. Zotero sync fits real workflows.
 
-:::callout ⚠️ Limitations
-It's **discovery only** — no synthesis, extraction, or writing. Graphs rely on citation data with **coverage gaps**, so newer or non-indexed work can be under-represented. There's **no quality filter** — popularity in the graph ≠ rigour. It's easy to lose hours down interesting rabbit holes.
-:::
+**Limitations.** It's **discovery only** — no synthesis, extraction, or writing. Graphs rely on citation data with **coverage gaps**, so newer or non-indexed work can be under-represented. There's **no quality filter** — popularity in the graph ≠ rigour. It's easy to lose hours down interesting rabbit holes.
 
 | Plan | Price (verified mid-2026) | Includes |
 |---|---|---|
@@ -394,13 +375,9 @@ Export the polished, correctly cited manuscript.
 - **Systematic reviewers:** finalise the manuscript once synthesis is complete.
 - **Interdisciplinary / non-native English researchers:** close the language gap that slows acceptance.
 
-:::callout ✅ Strengths
-The most *academically tuned* editor of this group — its suggestions respect scholarly register rather than flattening it. Submission-readiness and citation-style breadth are genuinely useful at the finish line. Strong fit for non-native English authors.
-:::
+**Strengths.** The most *academically tuned* editor of this group — its suggestions respect scholarly register rather than flattening it. Submission-readiness and citation-style breadth are genuinely useful at the finish line. Strong fit for non-native English authors.
 
-:::callout ⚠️ Limitations
-It's an **editing tool, not a discovery or synthesis tool**. Generative suggestions still need author judgement — accepting them blindly can introduce errors or change meaning. Plagiarism and AI-detection are **aids, not guarantees**, and detection tools are imperfect. It improves *how* you write, not *what* you know.
-:::
+**Limitations.** It's an **editing tool, not a discovery or synthesis tool**. Generative suggestions still need author judgement — accepting them blindly can introduce errors or change meaning. Plagiarism and AI-detection are **aids, not guarantees**, and detection tools are imperfect. It improves *how* you write, not *what* you know.
 
 | Plan | Price (verified mid-2026) | Includes |
 |---|---|---|
@@ -417,7 +394,7 @@ It's an **editing tool, not a discovery or synthesis tool**. Generative suggesti
 
 ## How the six tools really compare
 
-::image{src=/blog/ai-tools-for-scientific-research-2026/tool-comparison.jpg caption="The six tools mapped by primary job — discover, evaluate, extract, write, polish"}
+::image{src=/blog/ai-tools-for-scientific-research-2026/tool-comparison.jpg caption="The six tools mapped by the job each one actually does"}
 
 | Tool | Best for | Free version | Paid (from) | AI search | Writing | Citation support | Systematic-review support | Learning curve | Rating |
 |---|---|---|---|---|---|---|---|---|---|
@@ -428,17 +405,15 @@ It's an **editing tool, not a discovery or synthesis tool**. Generative suggesti
 | **ResearchRabbit** | Discovery & mapping | Full & free | Local pricing | Graph-based | No | Discovery only | Strong (snowball) | Beginner | ★★★★★ |
 | **Paperpal** | Editing & polish | Limited daily | $25/mo | No | Strong (edit) | Strong (styles) | Weak | Beginner | ★★★★☆ |
 
-:::callout 💡 Read the table this way
-No single tool wins. They occupy **different jobs** in the research lifecycle. The researchers who get the most value don't pick one — they chain two or three across the stages below.
-:::
+No single tool wins here, because they are not competing for the same job. Each occupies a **different stage** of the research lifecycle, and the researchers who get the most value out of them do not pick one — they chain two or three across the stages.
 
 ::section 09 — The End-to-End Research Workflow
 
 ## Five stages, five tools, one project
 
-Here is how these tools combine on a real review — say, *"the effect of spaced repetition on long-term retention."*
-
 ::image{src=/blog/ai-tools-for-scientific-research-2026/research-workflow.jpg caption="The five-stage AI-assisted research workflow"}
+
+Here is how these tools combine on a real review — say, *"the effect of spaced repetition on long-term retention."*
 
 :::actions
 **Stage 1 — Discover papers · ResearchRabbit + Consensus**
@@ -457,8 +432,6 @@ With your evidence table in hand, draft the synthesis in Jenni — grounded in y
 Run the full draft through Paperpal for academic language, citation styling, and the 30+ submission-readiness checks before it reaches your supervisor or the journal.
 :::
 
-::image{src=/blog/ai-tools-for-scientific-research-2026/ai-research-pipeline.jpg caption="The AI-assisted research pipeline, tool by tool"}
-
 :::pullquote -- On combining tools
 Discovery, evaluation, and extraction are where AI multiplies you. Writing and polishing are where it assists you. Judgement stays yours at every stage — the workflow is a scaffold, not an autopilot.
 :::
@@ -467,7 +440,7 @@ Discovery, evaluation, and extraction are where AI multiplies you. Writing and p
 
 ## What it costs to assemble a stack
 
-::image{src=/blog/ai-tools-for-scientific-research-2026/pricing-comparison.jpg caption="Pricing tiers across the six tools (verified mid-2026)"}
+::image{src=/blog/ai-tools-for-scientific-research-2026/pricing-comparison.jpg caption="Pricing tiers across the six tools, verified mid-2026"}
 
 | Tool | Free tier | Entry paid plan | Student/academic discount |
 |---|---|---|---|

@@ -1,3 +1,16 @@
+/*
+ * UNUSED — kept for reference only.
+ *
+ * This was a hand-built React layout for the "AI Tools for Scientific Research
+ * in 2026" post. The blog now renders every post through the shared Markdown
+ * pipeline (src/lib/markdown.js + .blog-prose) so the three articles read as one
+ * publication, and this component is no longer imported anywhere.
+ *
+ * To bring it back, re-register the slug in src/pages/BlogPost.jsx:
+ *   import AiToolsGuide from '../components/blog/AiToolsGuide'
+ *   const CUSTOM_POSTS = { 'ai-tools-for-scientific-research-2026': AiToolsGuide }
+ * Otherwise this file is safe to delete.
+ */
 import {
   Search, BookOpen, Scale, Layers, PenLine, FolderTree,
   Check, CheckCircle2, AlertTriangle, Star, ArrowUpRight,

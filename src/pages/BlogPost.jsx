@@ -1,20 +1,21 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { Calendar, Clock, ArrowLeft } from 'lucide-react'
 import { getPostBySlug, getCategory, posts } from '../lib/blogLoader'
-import AiToolsGuide from '../components/blog/AiToolsGuide'
+import { useFigureFallback } from '../hooks/useFigureFallback'
 
 /**
- * Posts with a premium hand-built React layout. The slug maps to a component that
- * renders rich infographic sections instead of the Markdown body. Any post NOT
- * listed here renders its Markdown (blog-prose) as usual. Add flagship posts here.
+ * Escape hatch for a post that needs a hand-built React layout instead of the
+ * shared Markdown body. Empty by design: every post currently uses the same
+ * editorial Markdown treatment (blog-prose + the ::block syntax) so the blog
+ * reads as one publication. Only add a slug here for content the Markdown
+ * blocks genuinely cannot express.
  */
-const CUSTOM_POSTS = {
-  'ai-tools-for-scientific-research-2026': AiToolsGuide,
-}
+const CUSTOM_POSTS = {}
 
 export default function BlogPost() {
   const { slug } = useParams()
   const post = getPostBySlug(slug)
+  useFigureFallback(slug)
 
   if (!post) return <Navigate to="/blog" replace />
 
